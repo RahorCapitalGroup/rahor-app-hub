@@ -46,10 +46,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .gold-border {
-      border-image: linear-gradient(to right, #D4AF37, rgba(212, 175, 55, 0.2), #D4AF37) 1;
-    }
-
     @keyframes pulse-gold {
       0%, 100% { opacity: 0.4; transform: scale(1); }
       50% { opacity: 0.8; transform: scale(1.03); }
@@ -100,7 +96,7 @@
         🏛️ Central Oficial de Software Corporativo
       </span>
       <h2 class="relative z-10 font-cyber text-3xl lg:text-5xl font-black text-white tracking-wide">
-        Ecossistema de Elite & <span class="gold-gradient-text">Cibersegurança</span>
+        Ecossistema de Elite & <span class="gold-gradient-text">Ferramentas</span>
       </h2>
       <p class="relative z-10 text-slate-400 text-sm lg:text-base max-w-2xl mx-auto leading-relaxed">
         Sua sessão de acesso e credenciais de assinatura são propagadas de forma segura e instantânea para todas as ferramentas da suíte Rahor.
@@ -125,13 +121,34 @@
         </div>
         <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between relative z-10">
           <span class="text-[10px] text-cyan-400/90 font-mono-code">Sessão Sincronizada</span>
-          <button onclick="launchSentinel()" class="px-4 py-2.5 bg-gradient-to-r from-cyan-400 to-blue-600 hover:opacity-95 text-slate-950 font-extrabold text-xs rounded-xl transition shadow-lg shadow-cyan-500/20 active:scale-95">
+          <button onclick="launchApp('sentinel')" class="px-4 py-2.5 bg-gradient-to-r from-cyan-400 to-blue-600 hover:opacity-95 text-slate-950 font-extrabold text-xs rounded-xl transition shadow-lg shadow-cyan-500/20 active:scale-95">
             Acessar Sentinel →
           </button>
         </div>
       </div>
 
-      <!-- CARD 2: RAHOR DESKTOP AGENT (.EXE) -->
+      <!-- CARD 2: RAHOR TOOLKIT (PDF & UTILS) - NOVO! -->
+      <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between border border-amber-500/40 relative overflow-hidden group">
+        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition"></div>
+        <div class="space-y-3.5 relative z-10">
+          <div class="flex items-center justify-between">
+            <div class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl font-bold">📄</div>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono-code bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold">LIBERADO (TOOLKIT)</span>
+          </div>
+          <h3 class="font-cyber text-lg font-bold text-white group-hover:text-amber-300 transition">Rahor Toolkit</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Central de utilitários corporativos em PDF e processamento de documentos com expansão contínua de ferramentas utilitárias.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+          <span class="text-[10px] text-amber-400/90 font-mono-code">Utilitários Ativos</span>
+          <button onclick="launchApp('toolkit')" class="px-4 py-2.5 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 hover:opacity-95 text-slate-950 font-extrabold text-xs rounded-xl transition shadow-lg shadow-amber-500/20 active:scale-95">
+            Acessar Toolkit →
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 3: RAHOR DESKTOP AGENT (.EXE) -->
       <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between relative overflow-hidden group">
         <div class="absolute top-0 right-0 bg-amber-500/20 text-amber-300 text-[10px] font-mono-code px-3.5 py-1 rounded-bl-xl border-l border-b border-amber-500/40 font-bold">
           🔒 PLANO PRATA / PRO
@@ -151,7 +168,7 @@
         </div>
       </div>
 
-      <!-- CARD 3: RAHOR CORPORATE WHITE-LABEL -->
+      <!-- CARD 4: RAHOR CORPORATE WHITE-LABEL -->
       <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between relative overflow-hidden group">
         <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[10px] font-mono-code px-3.5 py-1 rounded-bl-xl border-l border-b border-purple-500/40 font-bold">
           🔒 PLANO OURO / CORP
@@ -233,7 +250,7 @@
         <div class="p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 space-y-2 flex flex-col justify-between">
           <div>
             <p class="text-cyan-400 font-bold text-sm">FREE</p>
-            <p class="text-slate-400 text-[10px] mt-1.5">• Sentinel Web<br>• Laudo PDF Básico<br>• IP Mascarado</p>
+            <p class="text-slate-400 text-[10px] mt-1.5">• Sentinel Web<br>• Toolkit PDF Básico<br>• IP Mascarado</p>
           </div>
           <span class="text-cyan-300 font-bold pt-3 block text-sm">R$ 0,00</span>
         </div>
@@ -269,10 +286,14 @@
       }
     }
 
-    function launchSentinel() {
+    function launchApp(appName) {
       const token = localStorage.getItem("rahor_session_token") || "free";
-      // Redireciona para o Sentinel repassando o token de sessão com segurança
-      window.location.href = `https://sentinel.rahorgroup.com/?token=${encodeURIComponent(token)}`;
+      let targetUrl = "https://sentinel.rahorgroup.com";
+      if (appName === "toolkit") {
+        targetUrl = "https://toolkit.rahorgroup.com";
+      }
+      // Redireciona repassando o token de sessão unificado via URL
+      window.location.href = `${targetUrl}/?token=${encodeURIComponent(token)}`;
     }
 
     function openLicenseModal() { document.getElementById("licenseModal").classList.remove("hidden"); }
