@@ -3,154 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#070A10" />
-  <title>RAHOR APP HUB | Central de Aplicativos Corporativos</title>
+  <meta name="theme-color" content="#05070B" />
+  <title>RAHOR APP HUB | Obsidian & Gold Enterprise Suite</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --obsidian-base: #05070B;
+      --obsidian-panel: rgba(13, 18, 28, 0.92);
+      --rahor-gold: #D4AF37;
+      --gold-champagne: #F3E5AB;
+      --cyan-tech: #00F0FF;
+    }
     body {
-      background-color: #070A10;
+      background-color: var(--obsidian-base);
       color: #E2E8F0;
       font-family: 'Inter', sans-serif;
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 38%),
-        radial-gradient(circle at 90% 85%, rgba(30, 64, 175, 0.12) 0%, transparent 42%);
+        radial-gradient(circle at 12% 15%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 88% 85%, rgba(0, 240, 255, 0.05) 0%, transparent 45%);
+      overflow-x: hidden;
     }
     .font-cyber { font-family: 'Orbitron', sans-serif; }
     .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    
     .glass-panel {
-      background: rgba(15, 21, 35, 0.94);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+      background: var(--obsidian-panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .card-hover:hover {
-      border-color: rgba(0, 240, 255, 0.5);
-      transform: translateY(-3px);
+    .glass-panel:hover {
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: 0 20px 55px rgba(212, 175, 55, 0.12);
+      transform: translateY(-4px);
     }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border {
+      border-image: linear-gradient(to right, #D4AF37, rgba(212, 175, 55, 0.2), #D4AF37) 1;
+    }
+
+    @keyframes pulse-gold {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.03); }
+    }
+    .gold-glow { animation: pulse-gold 4s infinite ease-in-out; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float { animation: float 5s infinite ease-in-out; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
 
   <!-- TOP HEADER -->
-  <header class="glass-panel sticky top-0 z-50 px-4 lg:px-10 py-4 border-b border-cyan-500/20 flex flex-wrap items-center justify-between gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-700 flex items-center justify-center shadow-lg shadow-cyan-500/25 border border-cyan-300/40">
-        <svg class="w-6 h-6 text-slate-950" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 6c1.86 0 3.41 1.28 3.86 3H8.14c.45-1.72 2-3 3.86-3zm0 8c-2.21 0-4-1.79-4-4h8c0 2.21-1.79 4-4 4z"/>
-        </svg>
+  <header class="glass-panel sticky top-0 z-50 px-4 lg:px-10 py-4 border-b border-amber-500/20 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-3.5">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-300 via-yellow-500 to-amber-800 flex items-center justify-center shadow-xl shadow-amber-500/20 border border-amber-200/40 animate-float">
+        <span class="font-cyber font-black text-slate-950 text-xl tracking-tighter">RR</span>
       </div>
       <div>
         <div class="flex items-center gap-2">
-          <h1 class="font-cyber text-lg font-black tracking-wider text-cyan-400">RAHOR APP HUB</h1>
-          <span class="text-[9px] font-mono-code bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 px-2 py-0.5 rounded uppercase">Enterprise Ecosystem</span>
+          <h1 class="font-cyber text-base lg:text-lg font-black tracking-widest gold-gradient-text">RAHOR APP HUB</h1>
+          <span id="badgePlanStatus" class="text-[9px] font-mono-code bg-amber-500/15 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full uppercase font-semibold">Free Ecosystem</span>
         </div>
-        <p class="text-[11px] text-slate-400 tracking-wider uppercase">Rahor Technology • Central de Soluções e Suítes</p>
+        <p class="text-[10px] text-slate-400 tracking-widest uppercase">Rahor Technology • Obsidian & Gold Architecture</p>
       </div>
     </div>
 
-    <div class="flex items-center gap-3 text-xs font-mono-code">
-      <a href="mailto:contato@rahorgroup.com" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-cyan-400 transition">
-        ✉️ Suporte Comercial
-      </a>
-      <button onclick="openPlansModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-slate-950 font-extrabold shadow-lg shadow-cyan-500/25 hover:opacity-95 transition">
-        ⭐ Planos & Assinaturas
+    <div class="flex items-center gap-2.5 text-xs font-mono-code">
+      <button onclick="openLicenseModal()" class="px-3.5 py-2 rounded-xl bg-slate-900/90 border border-amber-500/30 text-amber-300 hover:border-amber-400 transition flex items-center gap-1.5 active:scale-95">
+        <span>🔑</span> Inserir Licença
+      </button>
+      <button onclick="openPlansModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 text-slate-950 font-extrabold shadow-lg shadow-amber-500/20 hover:opacity-95 transition active:scale-95">
+        ⭐ Planos & Suítes
       </button>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8 space-y-8">
-    <div class="text-center space-y-3 pt-6 pb-2">
-      <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono-code text-xs">
-        🛡️ Plataforma Unificada Rahor Technology
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8 space-y-10">
+    <div class="text-center space-y-4 pt-8 pb-4 relative">
+      <div class="absolute inset-0 -top-10 flex items-center justify-center pointer-events-none">
+        <div class="w-96 h-96 bg-amber-500/10 rounded-full blur-3xl gold-glow"></div>
+      </div>
+      <span class="relative z-10 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono-code text-xs uppercase tracking-wider">
+        🏛️ Central Oficial de Software Corporativo
       </span>
-      <h2 class="font-cyber text-3xl lg:text-5xl font-black text-white tracking-wide">
-        Inteligência Cibernética & <span class="text-cyan-400">Desempenho</span>
+      <h2 class="relative z-10 font-cyber text-3xl lg:text-5xl font-black text-white tracking-wide">
+        Ecossistema de Elite & <span class="gold-gradient-text">Cibersegurança</span>
       </h2>
-      <p class="text-slate-400 text-sm lg:text-base max-w-2xl mx-auto">
-        Selecione abaixo a ferramenta desejada. Ferramentas essenciais liberadas no plano gratuito; suítes avançadas e agentes nativos condicionados aos planos Prata e Ouro.
+      <p class="relative z-10 text-slate-400 text-sm lg:text-base max-w-2xl mx-auto leading-relaxed">
+        Sua sessão de acesso e credenciais de assinatura são propagadas de forma segura e instantânea para todas as ferramentas da suíte Rahor.
       </p>
     </div>
 
     <!-- GRID DE APLICATIVOS (APP CARDS) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- CARD 1: RAHOR SENTINEL (WEB) - LIVRE NO FREE -->
-      <div class="glass-panel rounded-2xl p-6 space-y-4 card-hover flex flex-col justify-between border border-cyan-500/30">
-        <div class="space-y-3">
+      <!-- CARD 1: RAHOR SENTINEL (WEB) -->
+      <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between border border-amber-500/30 relative overflow-hidden group">
+        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition"></div>
+        <div class="space-y-3.5 relative z-10">
           <div class="flex items-center justify-between">
-            <span class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-lg">🛡️</span>
-            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono-code bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">GRATUITO / FREE</span>
+            <div class="w-11 h-11 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xl font-bold">🛡️</div>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono-code bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold">LIBERADO (FREE)</span>
           </div>
-          <h3 class="font-cyber text-base font-bold text-cyan-300">Rahor Sentinel (Web Suite)</h3>
+          <h3 class="font-cyber text-lg font-bold text-white group-hover:text-cyan-400 transition">Rahor Sentinel</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Auditoria de telemetria de rede, vazamento WebRTC, DNS-over-HTTPS, laudo PDF básico com IP mascarado e terminal interativo.
+            Suíte web de telemetria avançada, auditoria de rede, WebRTC ICE leaks, DNS-over-HTTPS e laudo PDF executivo com token unificado.
           </p>
         </div>
-        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-          <span class="text-[10px] text-slate-400 font-mono-code">Status: Online</span>
-          <a href="/rahor-sentinel/" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl transition shadow-md shadow-cyan-500/20">
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+          <span class="text-[10px] text-cyan-400/90 font-mono-code">Sessão Sincronizada</span>
+          <button onclick="launchSentinel()" class="px-4 py-2.5 bg-gradient-to-r from-cyan-400 to-blue-600 hover:opacity-95 text-slate-950 font-extrabold text-xs rounded-xl transition shadow-lg shadow-cyan-500/20 active:scale-95">
             Acessar Sentinel →
-          </a>
+          </button>
         </div>
       </div>
 
-      <!-- CARD 2: RAHOR DESKTOP AGENT (.EXE) - PLANO PRATA -->
-      <div class="glass-panel rounded-2xl p-6 space-y-4 card-hover flex flex-col justify-between relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-amber-500/20 text-amber-300 text-[10px] font-mono-code px-3 py-1 rounded-bl-xl border-l border-b border-amber-500/40">
+      <!-- CARD 2: RAHOR DESKTOP AGENT (.EXE) -->
+      <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between relative overflow-hidden group">
+        <div class="absolute top-0 right-0 bg-amber-500/20 text-amber-300 text-[10px] font-mono-code px-3.5 py-1 rounded-bl-xl border-l border-b border-amber-500/40 font-bold">
           🔒 PLANO PRATA / PRO
         </div>
-        <div class="space-y-3 pt-2">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg">💻</div>
-          <h3 class="font-cyber text-base font-bold text-slate-200">Rahor Desktop Agent (.EXE)</h3>
+        <div class="space-y-3.5 pt-2 relative z-10">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl font-bold">💻</div>
+          <h3 class="font-cyber text-lg font-bold text-white group-hover:text-amber-300 transition">Rahor Desktop Agent</h3>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Agente nativo para Windows, macOS e Linux. Varredura profunda de DLLs, processos em background, portas abertas e regras de Firewall.
+            Agente nativo para Windows e Linux. Varredura profunda de DLLs, processos em background, integridade de kernel e regras de Firewall.
           </p>
         </div>
-        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-          <span class="text-[10px] text-amber-400/90 font-mono-code">Requer Licença Pro</span>
-          <button onclick="openLockedModal('Rahor Desktop Agent (.EXE)', 'Prata (Pro)')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/40 font-bold text-xs rounded-xl transition">
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between relative z-10">
+          <span class="text-[10px] text-amber-400/90 font-mono-code">Requer Licença Prata</span>
+          <button onclick="openLockedModal('Rahor Desktop Agent', 'Prata (Pro)')" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 font-bold text-xs rounded-xl transition active:scale-95">
             🔒 Solicitar Acesso
           </button>
         </div>
       </div>
 
-      <!-- CARD 3: RAHOR ENTERPRISE AUDIT & WHITE-LABEL - PLANO OURO -->
-      <div class="glass-panel rounded-2xl p-6 space-y-4 card-hover flex flex-col justify-between relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[10px] font-mono-code px-3 py-1 rounded-bl-xl border-l border-b border-purple-500/40">
+      <!-- CARD 3: RAHOR CORPORATE WHITE-LABEL -->
+      <div class="glass-panel rounded-2xl p-6 space-y-5 flex flex-col justify-between relative overflow-hidden group">
+        <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[10px] font-mono-code px-3.5 py-1 rounded-bl-xl border-l border-b border-purple-500/40 font-bold">
           🔒 PLANO OURO / CORP
         </div>
-        <div class="space-y-3 pt-2">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-lg">🏢</div>
-          <h3 class="font-cyber text-base font-bold text-slate-200">Rahor Corporate White-Label</h3>
+        <div class="space-y-3.5 pt-2 relative z-10">
+          <div class="w-11 h-11 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl font-bold">🏢</div>
+          <h3 class="font-cyber text-lg font-bold text-white group-hover:text-purple-300 transition">Rahor Corporate White-Label</h3>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Geração de laudos executivos corporativos em PDF personalizados com a logo da sua empresa, auditoria B2B e suporte prioritário.
+            Geração de laudos executivos corporativos em PDF personalizados com a logomarca da sua empresa, auditoria B2B e suporte dedicado.
           </p>
         </div>
-        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between relative z-10">
           <span class="text-[10px] text-purple-400 font-mono-code">Exclusivo Enterprise</span>
-          <button onclick="openLockedModal('Rahor Corporate White-Label', 'Ouro (Enterprise)')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-purple-300 border border-purple-500/40 font-bold text-xs rounded-xl transition">
+          <button onclick="openLockedModal('Rahor Corporate White-Label', 'Ouro (Enterprise)')" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-purple-300 border border-purple-500/40 font-bold text-xs rounded-xl transition active:scale-95">
             🔒 Solicitar Upgrade
           </button>
-        </div>
-      </div>
-
-      <!-- CARD 4: RAHOR THREAT INTELLIGENCE (FUTURO) -->
-      <div class="glass-panel rounded-2xl p-6 space-y-4 card-hover flex flex-col justify-between opacity-75">
-        <div class="space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="w-10 h-10 rounded-xl bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-lg">📡</span>
-            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono-code bg-slate-800 text-slate-400">EM BREVE</span>
-          </div>
-          <h3 class="font-cyber text-base font-bold text-slate-300">Rahor Threat Feed</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Monitoramento em tempo real de vazamentos de credenciais, domínios maliciosos e alertas de inteligência de ameaças.
-          </p>
-        </div>
-        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-          <span class="text-[10px] text-slate-500 font-mono-code">Roadmap 2026</span>
-          <span class="text-xs text-slate-500 font-bold">Aguarde</span>
         </div>
       </div>
 
@@ -158,95 +175,130 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="glass-panel py-5 px-6 text-center border-t border-cyan-500/20 text-xs text-slate-400 font-mono-code space-y-1 mt-8">
-    <p class="text-cyan-400 font-bold tracking-wider">RAHOR TECHNOLOGY • CENTRAL DE APLICATIVOS</p>
-    <p class="text-[11px]">Domínio Oficial: <span class="text-slate-200">apps.rahorgroup.com</span></p>
+  <footer class="glass-panel py-6 px-6 text-center border-t border-amber-500/20 text-xs text-slate-400 font-mono-code space-y-2 mt-12">
+    <div class="flex items-center justify-center gap-2 text-amber-400 font-cyber font-bold tracking-widest text-sm">
+      <span>🛡️ RAHOR TECHNOLOGY</span>
+      <span>•</span>
+      <span>OBSIDIAN & GOLD SUITE</span>
+    </div>
+    <p class="text-[11px] text-slate-300">Central Oficial de Aplicativos: <span class="text-amber-300">apps.rahorgroup.com</span></p>
     <p class="text-[10px] text-slate-500">© 2026 Rahor Technology. Todos os direitos reservados. contato@rahorgroup.com</p>
   </footer>
 
-  <!-- MODAL DE BLOQUEIO (UPGRADE PAYWALL) -->
-  <div id="lockedModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-panel rounded-2xl max-w-md w-full p-6 space-y-4 relative border border-amber-500/40 text-xs">
-      <button onclick="closeLockedModal()" class="absolute top-3 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
-      
-      <div class="text-center space-y-2">
-        <span class="text-[10px] font-mono-code bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full">RECURSO RESTRITO</span>
-        <h3 id="lockedAppName" class="font-cyber text-base font-bold text-amber-300">Acesso Condicionado ao Plano</h3>
-        <p class="text-slate-300 text-xs leading-relaxed">
-          Esta ferramenta exige uma assinatura ativa no <strong id="lockedTierName" class="text-cyan-300">Plano Prata</strong> para liberação do Agente e chaves de acesso.
-        </p>
+  <!-- MODAL DE ATIVAÇÃO DE LICENÇA -->
+  <div id="licenseModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel rounded-2xl max-w-md w-full p-6 space-y-4 relative border border-amber-500/50 text-xs">
+      <button onclick="closeLicenseModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      <div class="text-center space-y-1">
+        <h3 class="font-cyber text-sm font-bold gold-gradient-text">🔑 ATIVAR CHAVE DE LICENÇA RAHOR</h3>
+        <p class="text-slate-300 text-[11px]">Insira sua chave de acesso corporativa para sincronizar o ecossistema:</p>
       </div>
-
-      <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-2 font-mono-code text-[11px]">
-        <p class="text-slate-300">• <strong>O que inclui:</strong> Licença de uso corporativo/individual, atualizações contínuas e suporte técnico da Rahor Technology.</p>
-        <p class="text-slate-300">• <strong>Como contratar:</strong> Solicite a ativação via WhatsApp com nossa equipe comercial.</p>
-      </div>
-
-      <div class="pt-2 flex gap-2">
-        <a id="whatsappUpgradeLink" href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20solicitar%20o%20upgrade%20para%20o%20plano%20Rahor." target="_blank" rel="noopener noreferrer"
-          class="flex-1 py-2.5 text-center bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-extrabold rounded-xl transition shadow-lg">
-          💬 Solicitar Upgrade via WhatsApp
-        </a>
-      </div>
+      <input type="text" id="licenseKeyInput" placeholder="Ex: RAHOR-PRATA-2026-PRO" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-amber-300 font-mono-code uppercase outline-none text-xs text-center tracking-wider" />
+      <button onclick="validateAndSaveLicense()" class="w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 font-extrabold rounded-xl shadow-lg transition active:scale-95">
+        Validar & Sincronizar Licença
+      </button>
+      <p class="text-[10px] text-slate-500 text-center font-mono-code">Dica de teste: Digite <code class="text-amber-400">RAHOR-PRATA-TEST</code></p>
     </div>
   </div>
 
-  <!-- MODAL DE PLANOS GERAIS -->
-  <div id="plansModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="glass-panel rounded-2xl max-w-2xl w-full p-6 space-y-4 relative border border-cyan-500/40 text-xs max-h-[92vh] overflow-y-auto">
-      <button onclick="closePlansModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
-      
+  <!-- MODAL DE UPGRADE / BLOQUEIO -->
+  <div id="lockedModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel rounded-2xl max-w-md w-full p-6 space-y-4 relative border border-amber-500/50 text-xs">
+      <button onclick="closeLockedModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
       <div class="text-center space-y-1">
-        <h3 class="font-cyber text-base font-bold text-cyan-400">⭐ PLANOS DE ASSINATURA RAHOR TECHNOLOGY</h3>
-        <p class="text-slate-400 text-[11px]">Escolha o nível de proteção e automação ideal para sua operação ou empresa.</p>
+        <span class="text-[10px] font-mono-code bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full font-bold">ACESSO CONDICIONADO</span>
+        <h3 id="lockedAppName" class="font-cyber text-base font-bold text-amber-300 pt-1">Recursos Avançados</h3>
+        <p class="text-slate-300 text-xs pt-1">Este aplicativo exige o <strong id="lockedTierName" class="text-amber-400">Plano Prata</strong> ativo.</p>
       </div>
+      <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-3 space-y-1.5 font-mono-code text-[11px] text-slate-300">
+        <p>• Licenciamento oficial corporativo.</p>
+        <p>• Ativação instantânea via chave digital ou suporte.</p>
+      </div>
+      <a id="whatsappUpgradeLink" href="https://wa.me/5511999999999?text=Olá,%2520gostaria%2520de%2520solicitar%2520o%2520upgrade%2520para%2520o%2520plano%2520Rahor." target="_blank" rel="noopener noreferrer"
+        class="block w-full py-3 text-center bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 font-extrabold rounded-xl transition shadow-lg active:scale-95">
+        💬 Solicitar Upgrade Comercial via WhatsApp
+      </a>
+    </div>
+  </div>
 
+  <!-- MODAL DE PLANOS -->
+  <div id="plansModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel rounded-2xl max-w-xl w-full p-6 space-y-4 relative border border-amber-500/50 text-xs max-h-[92vh] overflow-y-auto">
+      <button onclick="closePlansModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      <div class="text-center space-y-1">
+        <h3 class="font-cyber text-base font-bold gold-gradient-text">⭐ PLANOS DE ASSINATURA RAHOR</h3>
+        <p class="text-slate-400 text-[11px]">Escolha a categoria ideal para sua segurança e desempenho tecnológico.</p>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono-code text-xs pt-2">
-        <div class="p-3.5 rounded-xl bg-slate-950/90 border border-cyan-500/40 space-y-2 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 space-y-2 flex flex-col justify-between">
           <div>
-            <p class="text-cyan-400 font-bold text-sm">GRATUITO</p>
-            <p class="text-slate-400 text-[10px] mt-1">• Sentinel Web básico<br>• Laudo PDF com IP mascarado<br>• Terminal de Rede</p>
+            <p class="text-cyan-400 font-bold text-sm">FREE</p>
+            <p class="text-slate-400 text-[10px] mt-1.5">• Sentinel Web<br>• Laudo PDF Básico<br>• IP Mascarado</p>
           </div>
-          <span class="text-cyan-300 font-bold pt-3 block">R$ 0,00</span>
+          <span class="text-cyan-300 font-bold pt-3 block text-sm">R$ 0,00</span>
         </div>
-
-        <div class="p-3.5 rounded-xl bg-slate-950/90 border border-blue-500/60 space-y-2 flex flex-col justify-between relative">
-          <div class="absolute -top-2.5 right-3 bg-blue-500 text-slate-950 text-[9px] font-bold px-2 py-0.5 rounded">POPULAR</div>
+        <div class="p-4 rounded-xl bg-slate-950/90 border border-amber-500/60 space-y-2 flex flex-col justify-between relative shadow-lg shadow-amber-500/10">
+          <div class="absolute -top-2.5 right-3 bg-amber-500 text-slate-950 text-[9px] font-bold px-2 py-0.5 rounded uppercase">PRO</div>
           <div>
-            <p class="text-blue-400 font-bold text-sm">PRATA (PRO)</p>
-            <p class="text-slate-400 text-[10px] mt-1">• Agente Desktop (.exe)<br>• Correção de DLLs/SO<br>• Suporte Prioritário</p>
+            <p class="text-amber-300 font-bold text-sm">PRATA</p>
+            <p class="text-slate-400 text-[10px] mt-1.5">• Agente Desktop (.exe)<br>• Reparo de DLL / SO<br>• Suporte Direto</p>
           </div>
-          <span class="text-blue-300 font-bold pt-3 block">Consulte Pro</span>
+          <span class="text-amber-400 font-bold pt-3 block text-sm">Próximo Nível</span>
         </div>
-
-        <div class="p-3.5 rounded-xl bg-slate-950/90 border border-amber-500/60 space-y-2 flex flex-col justify-between">
+        <div class="p-4 rounded-xl bg-slate-950/90 border border-purple-500/60 space-y-2 flex flex-col justify-between">
           <div>
-            <p class="text-amber-400 font-bold text-sm">OURO (CORP)</p>
-            <p class="text-slate-400 text-[10px] mt-1">• White-Label em PDF<br>• Multi-dispositivos B2B<br>• Engenheiro dedicado</p>
+            <p class="text-purple-400 font-bold text-sm">OURO</p>
+            <p class="text-slate-400 text-[10px] mt-1.5">• White-Label Laudo<br>• Auditoria B2B<br>• Engenheiro Dedicado</p>
           </div>
-          <span class="text-amber-300 font-bold pt-3 block">Enterprise</span>
+          <span class="text-purple-300 font-bold pt-3 block text-sm">Enterprise</span>
         </div>
-      </div>
-
-      <div class="pt-3 text-center">
-        <a href="mailto:contato@rahorgroup.com?subject=Contratacao%20Planos%20Rahor" 
-          class="inline-block px-6 py-2.5 bg-gradient-to-r from-cyan-400 to-blue-600 text-slate-950 font-extrabold rounded-xl shadow-lg">
-          ✉️ Falar com Consultor Comercial (contato@rahorgroup.com)
-        </a>
       </div>
     </div>
   </div>
 
   <script>
-    function openLockedModal(appName, tierName) {
-      document.getElementById("lockedAppName").innerText = `Desbloquear: ${appName}`;
-      document.getElementById("lockedTierName").innerText = `Plano ${tierName}`;
+    function checkHubSession() {
+      const token = localStorage.getItem("rahor_session_token") || "free";
+      const badge = document.getElementById("badgePlanStatus");
+      if (token.toUpperCase().includes("PRATA") || token.toUpperCase().includes("PRO")) {
+        badge.innerText = "Plano Prata Ativo";
+        badge.className = "text-[9px] font-mono-code bg-amber-500/20 text-amber-300 border border-amber-500/50 px-2.5 py-0.5 rounded-full uppercase font-bold";
+      } else if (token.toUpperCase().includes("OURO") || token.toUpperCase().includes("CORP")) {
+        badge.innerText = "Plano Ouro Enterprise";
+        badge.className = "text-[9px] font-mono-code bg-purple-500/20 text-purple-300 border border-purple-500/50 px-2.5 py-0.5 rounded-full uppercase font-bold";
+      }
+    }
+
+    function launchSentinel() {
+      const token = localStorage.getItem("rahor_session_token") || "free";
+      // Redireciona para o Sentinel repassando o token de sessão com segurança
+      window.location.href = `https://sentinel.rahorgroup.com/?token=${encodeURIComponent(token)}`;
+    }
+
+    function openLicenseModal() { document.getElementById("licenseModal").classList.remove("hidden"); }
+    function closeLicenseModal() { document.getElementById("licenseModal").classList.add("hidden"); }
+    function openPlansModal() { document.getElementById("plansModal").classList.remove("hidden"); }
+    function closePlansModal() { document.getElementById("plansModal").classList.add("hidden"); }
+    function openLockedModal(app, tier) {
+      document.getElementById("lockedAppName").innerText = `Desbloquear: ${app}`;
+      document.getElementById("lockedTierName").innerText = `Plano ${tier}`;
       document.getElementById("lockedModal").classList.remove("hidden");
     }
     function closeLockedModal() { document.getElementById("lockedModal").classList.add("hidden"); }
 
-    function openPlansModal() { document.getElementById("plansModal").classList.remove("hidden"); }
-    function closePlansModal() { document.getElementById("plansModal").classList.add("hidden"); }
+    function validateAndSaveLicense() {
+      const key = document.getElementById("licenseKeyInput").value.trim().toUpperCase();
+      if (key.includes("PRATA") || key.includes("OURO") || key.includes("PRO") || key.includes("TEST")) {
+        localStorage.setItem("rahor_session_token", key);
+        alert("✅ Licença ativada e sincronizada com sucesso no ecossistema Rahor!");
+        closeLicenseModal();
+        checkHubSession();
+      } else {
+        alert("❌ Chave de licença inválida. Utilize uma chave válida dos planos Prata ou Ouro.");
+      }
+    }
+
+    window.onload = checkHubSession;
   </script>
 </body>
 </html>
